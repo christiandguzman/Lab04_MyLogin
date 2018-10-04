@@ -14,13 +14,16 @@
     <body>
         <h1>Login</h1>
         <br>
-        <form>
-            Username: <input type="text" name="username">
+        <form method="post" action="login">
+            Username: <input type="text" name="username" value=${username}>
             <br>
             Password: <input type="password" name="password">
             <br>
-            <input type="submit" value="Login">
-            
+            <input type="checkbox" name="remember">Remember Me
+            <br>
+            <input type="submit" value="Login" checked>
+            <br>
+            ${invalid}
         </form>
     </body>
 </html>
