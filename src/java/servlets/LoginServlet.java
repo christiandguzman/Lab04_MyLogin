@@ -23,17 +23,16 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 
     
-    
+    Cookie cookie;
      @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         //get session
         HttpSession session = request.getSession();
-         Cookie[] o = request.getCookies();
         //CHECK FOR COOKIES
-        if(o != null){
-            request.setAttribute("username",o[1].getValue());
+        if(cookie != null){
+            request.setAttribute("username",cookie.getValue());
              getServletContext()
                     .getRequestDispatcher("/WEB-INF/login.jsp")
                     .forward(request, response);
@@ -81,7 +80,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
            if(request.getParameter("remember")!=null){       
-                Cookie cookie = new Cookie("cookie",username);
+                cookie = new Cookie("cookie",username);
                 response.addCookie(cookie);
                 
            } else {
